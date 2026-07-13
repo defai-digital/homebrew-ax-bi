@@ -1,8 +1,8 @@
 cask "ax-bi" do
-  version "0.1.0"
-  sha256 "09b7b9b2c4e9e7f9963fa965b62db8e2f623cc3043e05629d12f335cbd34afdc"
+  version "2.0.3"
+  sha256 "e56096422d9483ab2ab1ba4343b02d9e23566527d807f73e2e790d61cb8d0e6b"
 
-  url "https://github.com/defai-digital/ax-bi/releases/download/ax-bi-desktop-v0.1.0/AX.BI_#{version}_aarch64.dmg",
+  url "https://github.com/defai-digital/ax-bi/releases/download/ax-bi-desktop-v2.0.3/AX.BI_#{version}_aarch64.dmg",
       verified: "github.com/defai-digital/ax-bi/"
   name "AX BI"
   desc "Desktop client and local runtime launcher for AX BI"
@@ -14,13 +14,14 @@ cask "ax-bi" do
   depends_on formula: "docker"
   depends_on formula: "docker-compose"
 
+  app "AX BI.app"
+
   preflight do
     # Clears any pre-existing bundle so upgrades from untracked installs do not
     # hit Homebrew's "already an App" guard.
-    FileUtils.rm_rf("#{appdir}/AX BI.app")
+    app_path = "#{appdir}/AX BI.app"
+    FileUtils.rm_r(app_path) if File.exist?(app_path)
   end
-
-  app "AX BI.app"
 
   postflight do
     system_command "/usr/bin/xattr",
