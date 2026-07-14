@@ -2,15 +2,11 @@ cask "ax-bi" do
   version "2.0.3"
   sha256 "e56096422d9483ab2ab1ba4343b02d9e23566527d807f73e2e790d61cb8d0e6b"
 
-  url "https://github.com/defai-digital/ax-bi/releases/download/ax-bi-desktop-v2.0.3/AX.BI_#{version}_aarch64.dmg"
+  url "https://github.com/defai-digital/ax-bi/releases/download/ax-bi-desktop-v2.0.3/AX.BI_#{version}_aarch64.dmg",
+      verified: "github.com/defai-digital/ax-bi/"
   name "AX BI"
   desc "Desktop client and local runtime launcher for AX BI"
   homepage "https://github.com/defai-digital/ax-bi"
-
-  livecheck do
-    url "https://github.com/defai-digital/ax-bi.git"
-    regex(/^ax-bi-desktop-v?(\d+(?:\.\d+)+)$/i)
-  end
 
   depends_on arch: :arm64
   depends_on macos: :monterey
@@ -23,8 +19,7 @@ cask "ax-bi" do
   preflight do
     # Clears any pre-existing bundle so upgrades from untracked installs do not
     # hit Homebrew's "already an App" guard.
-    app_path = "#{appdir}/AX BI.app"
-    FileUtils.rm_r(app_path) if File.exist?(app_path)
+    FileUtils.rm_r("#{appdir}/AX BI.app")
   end
 
   postflight do
