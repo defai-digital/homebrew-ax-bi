@@ -1,8 +1,8 @@
 cask "ax-bi" do
-  version "2.2.1"
-  sha256 "655545f9edd970726b434f2d8c4b4e2a7e9222750b2325f20960c36930097923"
+  version "2.2.2"
+  sha256 "047dcb507ffecace9991397e12f8f83e4e0158f80b9198a0fda94c49f2b08179"
 
-  url "https://github.com/defai-digital/ax-bi/releases/download/ax-bi-desktop-v2.2.1/AX.BI_#{version}_aarch64.dmg"
+  url "https://github.com/defai-digital/ax-bi/releases/download/ax-bi-desktop-v2.2.2/AX.BI_#{version}_aarch64.dmg"
   name "AX BI"
   desc "Desktop client and local runtime launcher for AX BI"
   homepage "https://github.com/defai-digital/ax-bi"
